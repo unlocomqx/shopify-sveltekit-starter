@@ -1,0 +1,16 @@
+.DS_Store
+.env.test
+node_modules
+/.svelte-kit
+/package
+build
+.storage/*.json
+src/scss/styles.css
+src/dummy.ts
+static/uploads
+static/useruploads
+logs
+config.js
+cypress/screenshots
+cypress/downloads
+tmp

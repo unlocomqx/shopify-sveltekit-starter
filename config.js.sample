@@ -1,0 +1,4 @@
+export default {
+  "e2e_url": "http://localhost:8081",
+  "e2e_database": "test_my_database",
+};
