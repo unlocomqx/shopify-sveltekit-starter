@@ -50,7 +50,7 @@ export function initAppBridge() {
   const host = urlParams.get("host");
 
   if (!shop && !host) {
-    console.log("Open the app from the shop admin interface");
+    throw new Error("Please open the app from the shop admin interface");
     return;
   }
 
