@@ -50,9 +50,7 @@ export function initAppBridge() {
   const host = urlParams.get("host");
 
   if (!shop && !host) {
-    const href = `${process.env.HOST}/?shop=${process.env.SHOP}`;
-    console.log("Redirect to", href);
-    location.href = href;
+    console.log("Open the app from the shop admin interface");
     return;
   }
 

@@ -71,11 +71,10 @@ const onlineAuth = createShopifyAuth({
 
 /** @type {import("@sveltejs/kit").Handle} */
 export async function handle({ request }) {
-  let shop = request.query.get("shop");
+  const shop = request.query.get("shop");
   const host = request.query.get("host");
 
   let activeShop = getShop(shop);
-
   // if not saved to memory, fetch from db
   if (shop && !activeShop) {
     activeShop = await prisma.shop.findUnique({
@@ -86,7 +85,7 @@ export async function handle({ request }) {
   }
 
   if (request.path === "/") {
-    if (!activeShop || activeShop.scope !== process.env["SCOPES"]) {
+    if (shop && activeShop && activeShop.scope !== process.env["SCOPES"]) {
       return {
         status: 301,
         headers: {
@@ -122,7 +121,6 @@ export async function handle({ request }) {
       // eslint-disable-next-line no-console
       console.error(e.message);
     }
-
     return ctx;
   }
 
