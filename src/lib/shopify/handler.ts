@@ -82,10 +82,13 @@ export async function handle({ request }) {
         name: shop,
       },
     });
+    if (!activeShop) {
+
+    }
   }
 
   if (request.path === "/") {
-    if (shop && activeShop && activeShop.scope !== process.env["SCOPES"]) {
+    if (shop && (!activeShop || activeShop.scope !== process.env["SCOPES"])) {
       return {
         status: 301,
         headers: {
